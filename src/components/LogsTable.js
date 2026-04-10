@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Typography, Table, Tag, Spin, Card, Collapse, Toast, Space, Tabs } from '@douyinfe/semi-ui';
 import { IconSearch, IconCopy, IconDownload } from '@douyinfe/semi-icons';
-import { API, timestamp2string } from '../helpers';
+import { API, timestamp2string, copy } from '../helpers';
 import { stringToColor } from '../helpers/render';
 import { ITEMS_PER_PAGE } from '../constants';
 import { renderModelPrice, renderQuota } from '../helpers/render';
@@ -51,7 +51,7 @@ const LogsTable = () => {
         const firstKey = Object.keys(baseUrls)[0];
         setActiveTabKey(firstKey);
         setBaseUrl(baseUrls[firstKey]);
-    }, [baseUrls]);
+    }, []);
 
     const handleTabChange = (key) => {
         setActiveTabKey(key);
@@ -118,9 +118,13 @@ const LogsTable = () => {
                 const logRes = await API.get(`${baseUrl}/api/log/token`, {
                     headers: { Authorization: `Bearer ${apikey}` },
                 });
-                const { success, data: logData } = logRes.data;
+                const { success, message, data: logData } = logRes.data;
                 if (success) {
                     newTabData.logs = logData.reverse();
+                    let quota = 0;
+                    for (let i = 0; i < logData.length; i++) {
+                        quota += logData[i].quota;
+                    }
                     setActiveKeys(['1', '2']); // 自动展开两个折叠面板
                 } else {
                     Toast.error('查询调用详情失败，请输入正确的令牌');

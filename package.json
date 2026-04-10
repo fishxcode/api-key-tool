@@ -1,7 +1,14 @@
 {
-  "name": "nekoapi-token",
+  "name": "fishxcode-api-key-tool",
   "version": "0.1.0",
+  "description": "FishXCode API key balance and usage log query page for NewAPI",
   "private": true,
+  "homepage": "https://api-key-tool.fishxcode.com/",
+  "author": "fishxcode <admin@fishxcode.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fishxcode/api-key-tool.git"
+  },
   "dependencies": {
     "@douyinfe/semi-icons": "^2.59.1",
     "@douyinfe/semi-icons-lab": "^2.59.1",

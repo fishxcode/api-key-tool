@@ -1,73 +1,118 @@
-> 该项目需配合NewAPI才能正常使用：[https://github.com/Calcium-Ion/new-api](https://github.com/Calcium-Ion/new-api)
+> 该项目需配合 NewAPI 才能正常使用：<https://github.com/Calcium-Ion/new-api>
 
 <div align="center">
-
-<h1 align="center">Neko API Key Tool</h1>
-
-NewAPI 令牌查询页
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCalcium-Ion%2Fneko-api-key-tool&env=REACT_APP_SHOW_DETAIL&env=REACT_APP_SHOW_BALANCE&env=REACT_APP_BASE_URL&env=REACT_APP_SHOW_ICONGITHUB&project-name=neko-api-key-tool&repository-name=neko-api-key-tool)
-
+  <h1 align="center">FishXCode API Key Tool</h1>
+  <p align="center">基于 NewAPI 的令牌额度与调用日志查询页</p>
 </div>
 
 ![image](img.png)
 
+## 项目简介
 
-### 使用方法
+这是一个基于 React + Semi UI 的 NewAPI 令牌查询前端，适合部署为独立查询页或嵌入现有站点。
 
-#### Vercel 部署
-1. 准备好你的 [NewAPI项目](https://github.com/Calcium-Ion/new-api);
-2. 点击右侧按钮开始部署：
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FCalcium-Ion%2Fneko-api-key-tool&env=REACT_APP_SHOW_DETAIL&env=REACT_APP_SHOW_BALANCE&env=REACT_APP_BASE_URL&env=REACT_APP_SHOW_ICONGITHUB&project-name=neko-api-key-tool&repository-name=neko-api-key-tool)，直接使用 Github 账号登录即可，记得根据自己需求配置环境变量，环境变量如下： 
+当前版本支持：
 
-```   
-REACT_APP_SHOW_BALANCE: 是否展示令牌信息，true 或 false
-REACT_APP_SHOW_DETAIL: 是否展示调用详情，true 或 false
-REACT_APP_BASE_URL: 你的NewAPI项目地址
-REACT_APP_SHOW_ICONGITHUB: 是否展示Github图标，true 或 false
-```
+- 查询令牌额度、剩余额度、已用额度与有效期
+- 查询调用日志、模型汇总、请求摘要与计费参数
+- 展示缓存读 / 缓存写 / 5m 创建 / 1h 创建相关信息
+- 支持多 NewAPI 站点聚合查询
+- 支持 `?key=` / `?site=` 直达查询
+- 支持桌面端表格视图与移动端卡片视图
+- 支持 CSV 导出与基础 SEO
 
-例如如下配置：
-```
-# 展示令牌信息
+## 环境变量
+
+```bash
+# 是否展示令牌额度信息
 REACT_APP_SHOW_BALANCE=true
 
-# 展示调用详情
+# 是否展示调用详情
 REACT_APP_SHOW_DETAIL=true
 
-# NewAPI的BaseURL（支持多个NewAPI站点聚合查询，键值对中的键为站点名称，值为站点的URL）
-REACT_APP_BASE_URL={"server1": "https://nekoapi.com", "server2": "https://gf.nekoapi.com"}
+# NewAPI 的 Base URL
+# 支持多个站点聚合查询，键为站点名称，值为站点 URL
+REACT_APP_BASE_URL={"main":"https://api-key-tool.fishxcode.com","www":"https://www.fishxcode.com"}
 
-# 展示GitHub图标
+# 是否展示 GitHub 图标
 REACT_APP_SHOW_ICONGITHUB=true
+
+# 站点对外 URL，用于 canonical / OG / sitemap
+REACT_APP_SITE_URL=https://api-key-tool.fishxcode.com
 ```
 
-3. 部署完毕后，即可开始使用；
-4. （可选）[绑定自定义域名](https://vercel.com/docs/concepts/projects/domains/add-a-domain)：Vercel 分配的域名 DNS 在某些区域被污染了，绑定自定义域名即可直连。
+## 本地开发
 
-#### Docker 部署
-1. 克隆项目到本地:
 ```bash
-git clone https://github.com/Calcium-Ion/neko-api-key-tool.git
-cd neko-api-key-tool
-```
-
-2. 创建并配置环境变量文件:
-```bash
-# 复制.env.example文件为.env
+npm install
 cp .env.example .env
-# 根据自己需求配置env文件中的环境变量
-vim .env
+npm start
 ```
 
-3. 构建并运行 Docker 容器:
+默认开发地址：
+
 ```bash
-# 构建镜像
-docker build -t neko-api-key-tool .
-
-# 运行容器
-docker run -d -p 80:80 --name neko-api-key-tool neko-api-key-tool
+http://localhost:3000
 ```
 
-### 二次开发
-复制.env.example文件为.env，根据自己需求配置env文件中的环境变量。
+支持直达查询：
+
+```bash
+http://localhost:3000/?key=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+http://localhost:3000/?key=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&site=server1
+```
+
+## 部署方式
+
+### Vercel
+
+1. 准备好你的 NewAPI 服务。
+2. 导入当前仓库到 Vercel。
+3. 配置上面的环境变量。
+4. 完成部署后即可使用。
+5. 如有需要，绑定自定义域名。
+
+### Docker
+
+```bash
+git clone git@github.com:fishxcode/api-key-tool.git
+cd api-key-tool
+cp .env.example .env
+docker build -t fishxcode-api-key-tool .
+docker run -d -p 80:80 --name fishxcode-api-key-tool fishxcode-api-key-tool
+```
+
+## 页面能力说明
+
+### 查询页
+
+- 支持输入令牌后实时查询
+- 支持按模型、请求摘要、流式类型筛选
+- 支持模型维度聚合统计
+- 支持缓存相关字段展示
+
+### 移动端
+
+- 移动端使用卡片化日志布局
+- 支持独立分页
+- 支持返回顶部
+
+## 二次开发
+
+复制 `.env.example` 为 `.env` 后，根据你的 NewAPI 地址与展示需求调整配置即可。
+
+常用命令：
+
+```bash
+npm start
+npm run build
+```
+
+## 版权与来源
+
+本项目基于原始项目 **Calcium-Ion / neko-api-key-tool** 继续开发与定制，保留原项目版权与来源信息。
+
+- 原项目地址：<https://github.com/Calcium-Ion/neko-api-key-tool>
+- 依赖后端：<https://github.com/Calcium-Ion/new-api>
+
+如果你在分发、二次修改或商业使用时需要进一步明确许可证，请同时查阅原项目仓库中的许可证与版权声明。

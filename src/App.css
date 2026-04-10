@@ -28,6 +28,223 @@
     color: #61dafb;
 }
 
+.App-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: calc(100vh - 168px);
+}
+
+.site-footer {
+    margin-top: auto;
+    background: linear-gradient(180deg, #19150f 0%, #110e0a 100%);
+    color: #f5e6c8;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(25, 21, 15, 0.18);
+}
+
+.site-footer__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 24px;
+}
+
+.site-footer__grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.2fr) repeat(3, minmax(140px, 1fr));
+    gap: 28px;
+}
+
+.site-footer__brand {
+    padding-right: 12px;
+}
+
+.site-footer__logoRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.site-footer__logo {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #c9973e 0%, #de7898 100%);
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.site-footer__brandName {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.site-footer__brandText {
+    margin: 0;
+    color: #e0c870;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.site-footer__title {
+    margin: 0 0 14px;
+    color: #ffffff;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.site-footer__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.site-footer__link,
+.site-footer__legalLink {
+    color: #e0c870;
+    text-decoration: none;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.site-footer__link {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.site-footer__legalLink {
+    font-size: 13px;
+    color: #8e97bd;
+}
+
+.site-footer__link:hover,
+.site-footer__legalLink:hover {
+    opacity: 0.8;
+}
+
+.site-footer__divider {
+    height: 1px;
+    margin: 28px 0 20px;
+    background: rgba(165, 180, 252, 0.15);
+}
+
+.site-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.site-footer__copyright {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: #8e97bd;
+    font-size: 13px;
+}
+
+.site-footer__dot {
+    color: #4b5474;
+}
+
+.site-footer__legal {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+    .site-footer__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .App-body {
+        gap: 20px;
+        min-height: calc(100vh - 132px);
+    }
+
+    .site-footer {
+        border-radius: 18px;
+    }
+
+    .site-footer__inner {
+        padding: 24px 18px 20px;
+    }
+
+    .site-footer__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 16px;
+    }
+
+    .site-footer__brand {
+        grid-column: 1 / -1;
+        padding-right: 0;
+    }
+
+    .site-footer__section:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .site-footer__title {
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+
+    .site-footer__list {
+        gap: 8px;
+    }
+
+    .site-footer__link {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .site-footer__brandText {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .site-footer__divider {
+        margin: 22px 0 16px;
+    }
+
+    .site-footer__bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .site-footer__copyright {
+        gap: 6px;
+        font-size: 12px;
+    }
+
+    .site-footer__dot {
+        display: none;
+    }
+
+    .site-footer__legal {
+        gap: 12px;
+    }
+
+    .site-footer__legalLink {
+        font-size: 12px;
+    }
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);

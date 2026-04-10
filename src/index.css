@@ -62,21 +62,7 @@ code {
     padding-left: 0;
     padding-right: 0;
   }
-  .semi-table-tbody,
-  .semi-table-row,
-  .semi-table-row-cell {
-    display: block !important;
-    width: auto !important;
-    padding: 2px !important;
-  }
-  .semi-table-row-cell {
-    border-bottom: 0 !important;
-  }
-  .semi-table-tbody > .semi-table-row {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
   .semi-space {
-    /*display: block!important;*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -99,4 +85,62 @@ code {
   .semi-input-wrapper {
     border-radius: 6px !important;
   }
+}
+
+.log-mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.log-mobile-card,
+.log-mobile-summary-card {
+  border: 1px solid var(--semi-color-border);
+  border-radius: 14px;
+  padding: 14px;
+  background: var(--semi-color-bg-1);
+}
+
+.log-mobile-card__head,
+.log-mobile-summary-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.log-mobile-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.log-mobile-card__section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.log-mobile-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.log-mobile-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--semi-color-fill-0);
+}
+
+.log-mobile-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }

@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+Sitemap: https://api-key-tool.fishxcode.com/sitemap.xml
